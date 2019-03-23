@@ -21,19 +21,22 @@ void loop(void)
 {
   while (radio.available())
   {
-    digitalWrite(LED_PIN, LOW);  //Connection established
     radio.read(ReceivedMessage, 1); // Read information from the NRF24L01
 
-    if (ReceivedMessage[0] == 111) // Switch is pressed
+    if (ReceivedMessage[0] == 111) // Switch 1 is pressed - Lock Computer.
     {
       digitalWrite(LED_PIN, LOW);
-      Keyboard.print("Switch1 Hit");
+      Keyboard.press(KEY_LEFT_GUI);
+      Keyboard.press('l');
+      Keyboard.releaseAll();
     }
-    else
+    else if (ReceivedMessage[0] == 222) // Switch 2 is pressed - Minimize all windows.
     {
-      digitalWrite(LED_PIN, HIGH);
+      digitalWrite(LED_PIN, LOW);
+      Keyboard.press(KEY_LEFT_GUI);
+      Keyboard.write('d');
+      Keyboard.releaseAll();
     }
     delay(10);
   }
-   digitalWrite(LED_PIN, HIGH); //No connection established
 }
