@@ -1,3 +1,9 @@
+#include <nRF24L01.h>
+#include <printf.h>
+#include <RF24.h>
+#include <RF24_config.h>
+#include <Keyboard.h>
+
 void setup() {
   // put your setup code here, to run once:
 
