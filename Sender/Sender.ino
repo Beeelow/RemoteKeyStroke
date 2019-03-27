@@ -22,8 +22,11 @@ void setup(void)
   digitalWrite(SWITCH2_PIN, HIGH);
 
   //Initialize Radio
-  radio.begin(); // Start the NRF24L01
+  radio.begin(); 
   radio.openWritingPipe(pipe);
+  radio.setChannel(80);
+  radio.setDataRate(RF24_1MBPS);
+  radio.powerUp();
 }
 
 void loop(void)
